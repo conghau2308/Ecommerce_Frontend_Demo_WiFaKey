@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, CheckCircle2, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
-import { FRONTEND_BASE_URL } from "@/utils/env";
+import { FRONTEND_BASE_URL, OAUTH_LOGIN_URL } from "@/utils/env";
 
 const LoginPage = () => {
   // OAuth Configuration
@@ -146,9 +146,7 @@ const LoginPage = () => {
       code_challenge_method: codeChallengeMethod, // PKCE (S256)
     });
 
-    const url = `${
-      process.env.NEXT_PUBLIC_OAUTH_WIFAKEY_URL
-    }?${params.toString()}`;
+    const url = `${OAUTH_LOGIN_URL}?${params.toString()}`;
 
     const width = 900;
     const height = 700;

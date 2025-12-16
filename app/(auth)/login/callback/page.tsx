@@ -286,7 +286,7 @@ function CallbackContent() {
           message: data.message || "Token exchange failed",
         });
 
-        throw new Error(data.message || "Token exchange failed");
+        return;
       }
 
       console.log("✅ Token exchange successful:", {
