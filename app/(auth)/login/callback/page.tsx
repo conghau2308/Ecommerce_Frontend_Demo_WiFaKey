@@ -189,7 +189,7 @@ function CallbackContent() {
           state,
           code_verifier: codeVerifier,
         }),
-        credentials: "include",
+        // credentials: "include",
       });
 
       const data = await response.json();
