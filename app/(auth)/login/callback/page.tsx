@@ -261,6 +261,8 @@ function CallbackContent() {
             invalid_code_verifier:
               "code_verifier không khớp với code_challenge đã lưu",
 
+            nonce_used: "Nonce đã được sử dụng",
+
             // ===== Fallback =====
             unknown_error: "Đã xảy ra lỗi không xác định. Vui lòng thử lại.",
           };
