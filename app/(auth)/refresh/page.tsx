@@ -55,7 +55,7 @@ const RefreshTokenPage = () => {
     try {
       const response = await fetch(`${API_BASE_URL}/api/auth/refresh`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", 'ngrok-skip-browser-warning': 'true', },
         body: JSON.stringify({ refresh_token: refreshToken }),
       });
 
