@@ -328,7 +328,7 @@ const LoginPage = () => {
             <Input
               id="nonce"
               value={nonce || "Generating..."}
-              
+              onChange={(e) => setNonce(e.target.value)}
               className="bg-slate-100 font-mono text-xs"
             />
           </div>
