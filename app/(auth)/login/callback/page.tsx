@@ -262,6 +262,8 @@ function CallbackContent() {
             invalid_code_verifier:
               "code_verifier không khớp với code_challenge đã lưu",
 
+            nonce_used: "Nonce đã được sử dụng",
+
             // ===== Fallback =====
             unknown_error: "Đã xảy ra lỗi không xác định. Vui lòng thử lại.",
           };
@@ -292,13 +294,13 @@ function CallbackContent() {
 
       console.log("✅ Token exchange successful:", {
         hasAccessToken: !!data.accessToken,
-        hasIdToken: !!data.id_token,
+        hasIdToken: !!data.idToken,
         hasRefreshToken: !!data.refreshToken,
       });
 
       // Validate ID Token (including nonce)
-      if (data.id_token) {
-        const isValid = validateIdToken(data.id_token);
+      if (data.idToken) {
+        const isValid = validateIdToken(data.idToken);
         if (!isValid) {
           setExchangeResult({
             success: false,
@@ -315,8 +317,8 @@ function CallbackContent() {
       if (data.accessToken) {
         localStorage.setItem("access_token", data.accessToken);
       }
-      if (data.id_token) {
-        localStorage.setItem("id_token", data.id_token);
+      if (data.idToken) {
+        localStorage.setItem("id_token", data.idToken);
       }
       if (data.refreshToken) {
         localStorage.setItem("refresh_token", data.refreshToken);
