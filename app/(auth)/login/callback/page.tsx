@@ -16,6 +16,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertCircle,
+  AlertTriangle,
   CheckCircle2,
   Clock,
   Copy,
@@ -183,7 +184,7 @@ function CallbackContent() {
 
       const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", 'ngrok-skip-browser-warning': 'true', },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           code,
           state,
@@ -613,13 +614,13 @@ function CallbackContent() {
                   </>
                 ) : (
                   <>
-                    <XCircle className="h-4 w-4 text-red-600" />
+                    {/* <XCircle className="h-4 w-4 text-red-600" />
                     <AlertTitle className="text-red-800">
                       State Mismatch
                     </AlertTitle>
                     <AlertDescription className="text-red-700">
                       Security validation failed - this could be a CSRF attack
-                    </AlertDescription>
+                    </AlertDescription> */}
                   </>
                 )}
               </Alert>
@@ -695,13 +696,12 @@ function CallbackContent() {
                 Code Expiration Time
               </Label>
               <div
-                className={`flex h-12 w-full items-center justify-center rounded-md border px-3 py-2 text-lg font-mono font-bold shadow-sm transition-colors ${
-                  timeLeft === 0
-                    ? "border-red-500 bg-red-50 text-red-600 animate-pulse"
-                    : timeLeft < 60
+                className={`flex h-12 w-full items-center justify-center rounded-md border px-3 py-2 text-lg font-mono font-bold shadow-sm transition-colors ${timeLeft === 0
+                  ? "border-red-500 bg-red-50 text-red-600 animate-pulse"
+                  : timeLeft < 60
                     ? "border-orange-500 bg-orange-50 text-orange-600"
                     : "border-green-500 bg-green-50 text-green-600"
-                }`}
+                  }`}
               >
                 {timeLeft > 0 ? formatTime(timeLeft) : "EXPIRED"}
               </div>
@@ -781,15 +781,13 @@ function CallbackContent() {
   // ========================================================================
   return (
     <Card
-      className={`w-full max-w-2xl border-t-4 ${
-        exchangeResult.success ? "border-t-green-600" : "border-t-red-600"
-      }`}
+      className={`w-full max-w-2xl border-t-4 ${exchangeResult.success ? "border-t-green-600" : "border-t-red-600"
+        }`}
     >
       <CardHeader>
         <CardTitle
-          className={`flex items-center gap-2 ${
-            exchangeResult.success ? "text-green-600" : "text-red-600"
-          }`}
+          className={`flex items-center gap-2 ${exchangeResult.success ? "text-green-600" : "text-red-600"
+            }`}
         >
           {exchangeResult.success ? (
             <CheckCircle2 className="w-5 h-5" />
@@ -824,7 +822,7 @@ function CallbackContent() {
             )}
           </Alert>
         )}
-        
+
         {/* Token Details (Only on Success) */}
         {exchangeResult.success && exchangeResult.data && (
           <>
